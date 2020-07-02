@@ -1,25 +1,17 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import PostCard from '../components/post-card'
 
 const Index = ({ data }) => {
+  console.log(data)
   return (
     <Layout>
       <div>
         <h1>文章列表</h1>
         <h4>共{data.allStrapiPost.totalCount} 篇文章</h4>
         {data.allStrapiPost.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link to={node.url}>
-            <h3>
-              {node.title}{" "}
-              <span>
-                — {node.created_at}
-              </span>
-            </h3>
-            </Link>
-            <p>{node.excerpt}</p>
-          </div>
+          <PostCard {...node} key={node.id}/>
         ))}
       </div>
     </Layout>
