@@ -13,6 +13,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -25,6 +33,19 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `http://212.129.144.48:1337`,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [`post`, `tag`, `user`],
+        // Possibility to login with a strapi user, when content types are not publically available (optional).
+        loginData: {
+          identifier: "",
+          password: "",
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
