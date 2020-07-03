@@ -1,7 +1,10 @@
 import PropTypes from "prop-types"
 import { Link } from 'gatsby'
+import { FaRegBookmark, FaCalendarAlt, FaUser } from 'react-icons/fa'
+
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+
 
 const PostCard = (props) => {
   return (
@@ -12,8 +15,8 @@ const PostCard = (props) => {
     </div>
     <Link sx={{color: `black`}} css={{textDecoration: 'none'}} to={props.url}><h2>{props.title}</h2></Link>
     <div sx={{color: `textMuted`}}>{props.excerpt}</div>
-    <div>{props.created_at}</div>
-    <div>{props.author.username}</div>
+    <div><FaCalendarAlt className="fa-icon" />{props.created_at}</div>
+    <div><FaUser className="fa-icon" />{props.author.username}</div>
   </div>)
 }
 
