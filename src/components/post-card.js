@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import React from "react"
+import { Link } from 'gatsby'
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
@@ -7,7 +7,10 @@ const PostCard = (props) => {
   return (
   <div>
     <img src={props.cover.publicURL}></img>
-    <h2>{props.title}</h2>
+    <div>
+      {props.tags.map(tag => <span>{tag.name}</span>)}
+    </div>
+    <Link sx={{color: `black`}} css={{textDecoration: 'none'}} to={props.url}><h2>{props.title}</h2></Link>
     <div sx={{color: `textMuted`}}>{props.excerpt}</div>
     <div>{props.created_at}</div>
     <div>{props.author.username}</div>
