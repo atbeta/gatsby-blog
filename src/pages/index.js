@@ -4,7 +4,6 @@ import Layout from "../components/layout"
 import PostCard from '../components/post-card'
 
 const Index = ({ data }) => {
-  console.log(data)
   return (
     <Layout>
       <div>
