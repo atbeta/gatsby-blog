@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
-import { Link } from 'gatsby'
+import { Link as GatsbyLink } from 'gatsby'
 import { FaRegBookmark, FaCalendarAlt, FaUser } from 'react-icons/fa'
 import { Flex, Grid } from 'theme-ui'
 
 /** @jsx jsx */
-import { jsx, Image } from "theme-ui"
+import { jsx, Image, Link } from "theme-ui"
 
 import Tag from './tag'
 
@@ -13,14 +13,14 @@ const PostCard = (props) => {
   return (
   <div>
     <Image src={props.cover.publicURL} variant="cover"></Image>
-    <div>
+    <div sx={{mt: 6}}>
       {props.tags.map(tag => <Tag name={tag.name}/>)}
     </div>
-    <Link sx={{color: `text`}} css={{textDecoration: 'none'}} to={props.url}><h1>{props.title}</h1></Link>
-    <div sx={{color: `secondary`}}>{props.excerpt}</div>
-    <Flex>
-      <Grid><FaCalendarAlt className="fa-icon" />{props.created_at}</Grid>
-      <Grid><FaUser className="fa-icon" />{props.author.username}</Grid>
+    <Link as={GatsbyLink} variant="nav" to={props.url}><h1>{props.title}</h1></Link>
+    <div sx={{color: `secondary`, mb: 6}}>{props.excerpt}</div>
+    <Flex sx={{mb: 6}}>
+    <span><FaCalendarAlt className="fa-icon" />{props.created_at}</span>
+    <span><FaUser className="fa-icon" />{props.author.username}</span>
     </Flex>
   </div>)
 }

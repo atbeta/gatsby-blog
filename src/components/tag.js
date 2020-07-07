@@ -1,24 +1,29 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import { Styled } from 'theme-ui'
 
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
 const Tag = ({ name }) => (
-  <span>{name}</span>
+  <Styled.div 
+    as="span"
+    sx={{
+      mr: 5,
+      py: 4,
+      px: 6,
+      bg: 'tagBackground',
+      color: 'secondary',
+      fontSize: 0,
+      borderRadius: 'md',
+      ':hover': {
+        color: 'primary',
+        bg: 'background',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: 'primary'
+      }
+    }}
+  >{name}</Styled.div>
 )
-
-// const Tag = styled.span`
-//   margin-right: 10px;
-//   font-size: 12px;
-//   color: #a0a8bd;
-//   border: 1px solid transparent;
-//   background: rgba(160, 168, 189, .2);
-//   border-radius: 15px;
-//   padding: 3px 15px;
-//   &:hover {
-//     color: red;
-//   }
-// `
 
 export default Tag
