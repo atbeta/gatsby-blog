@@ -3,18 +3,20 @@ import { Link } from 'gatsby'
 import { FaRegBookmark, FaCalendarAlt, FaUser } from 'react-icons/fa'
 
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Image } from "theme-ui"
 
+import Tag from './tag'
 
 const PostCard = (props) => {
+  
   return (
   <div>
-    <img src={props.cover.publicURL}></img>
+    <Image src={props.cover.publicURL} variant="cover"></Image>
     <div>
-      {props.tags.map(tag => <span>{tag.name}</span>)}
+      {props.tags.map(tag => <Tag name={tag.name}/>)}
     </div>
-    <Link sx={{color: `black`}} css={{textDecoration: 'none'}} to={props.url}><h2>{props.title}</h2></Link>
-    <div sx={{color: `textMuted`}}>{props.excerpt}</div>
+    <Link sx={{color: `text`}} css={{textDecoration: 'none'}} to={props.url}><h1>{props.title}</h1></Link>
+    <div sx={{color: `secondary`}}>{props.excerpt}</div>
     <div><FaCalendarAlt className="fa-icon" />{props.created_at}</div>
     <div><FaUser className="fa-icon" />{props.author.username}</div>
   </div>)
